@@ -1,6 +1,10 @@
+import 'package:e_book_app/components/special_for_you.dart';
 import 'package:e_book_app/json/home_json.dart';
+import 'package:e_book_app/pages/book_detail_page.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:line_icons/line_icons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -71,62 +75,10 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 15,
           ),
-          getSpecialForYou(),
+          const SpecialForYou(books: specialForYouJson),
         ],
       ),
     ));
-  }
-
-  Widget getSpecialForYou() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Special for you",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "See all",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                SizedBox(
-                  width: 3,
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14,
-                )
-              ],
-            ),
-          ],
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ...specialForYouJson.map((item) => Container(
-                    height: 160,
-                    width: 120,
-                    margin: const EdgeInsets.only(right: 15),
-                    decoration: BoxDecoration(
-                        color: blue,
-                        image: DecorationImage(
-                            image: AssetImage(item['img']), fit: BoxFit.cover)),
-                  ))
-            ],
-          ),
-        )
-      ],
-    );
   }
 
   Widget getReadyTodaySection() {
