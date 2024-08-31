@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
+const String profileUrl =
+    "https://img0.baidu.com/it/u=2266791864,792280171&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=458";
+const String readyToday =
+    "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fss2.meipian.me%2Fusers%2F3527143%2F1ae5563104cad73868342314a03b81d4.jpg%3Fmeipian-raw%2Fbucket%2Fivwen%2Fkey%2FdXNlcnMvMzUyNzE0My8xYWU1NTYzMTA0Y2FkNzM4NjgzNDIzMTRhMDNiODFkNC5qcGc%3D%2Fsign%2F19c61b47a87652ba824eb079b8779340.jpg&refer=http%3A%2F%2Fss2.meipian.me&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1727634364&t=f8be3b18d7e8e914d3cb707bbceb779b";
+
 const List tags = [
   {"label": "Education", "color": Color(0xFF7871aa)},
   {"label": "Self-development", "color": Color(0xFF7fb069)},
-  {"label": "Psychology", "color": Color(0xFFcc7e85)}
+  {"label": "Psychology", "color": Color(0xFFcc7e85)},
 ];
 
 const List storeTags = [
@@ -18,7 +23,8 @@ const List storeTags = [
 
 const List specialForYouJson = [
   {
-    "img": "https://covers.openlibrary.org/b/id/12726999-L.jpg",
+    // "img": "https://covers.openlibrary.org/b/id/12726999-L.jpg",
+    "img": "lib/images/0012726999-L.jpg",
     "price": "5.00",
     "title": "Shatter me",
     "sub_title": "1st ed.",
@@ -28,7 +34,8 @@ const List specialForYouJson = [
     "page": "87"
   },
   {
-    "img": "https://covers.openlibrary.org/b/id/10362743-L.jpg",
+    // "img": "https://covers.openlibrary.org/b/id/10362743-L.jpg",
+    "img": "lib/images/0010362743-L.jpg",
     "price": "8.99",
     "title": "A Court of Thorns and Roses",
     "sub_title": "A Court of Thorns and Roses",
@@ -38,7 +45,8 @@ const List specialForYouJson = [
     "page": "263"
   },
   {
-    "img": "https://covers.openlibrary.org/b/id/8743774-L.jpg",
+    // "img": "https://covers.openlibrary.org/b/id/8743774-L.jpg",
+    "img": "lib/images/0008743774-L.jpg",
     "price": "3.40",
     "title": "Where the crawdads sing",
     "sub_title": "First large print edition.",
@@ -48,7 +56,8 @@ const List specialForYouJson = [
     "page": "60"
   },
   {
-    "img": "https://covers.openlibrary.org/b/id/10696993-L.jpg",
+    // "img": "https://covers.openlibrary.org/b/id/10696993-L.jpg",
+    "img": "lib/images/0010696993-L.jpg",
     "price": "5.99",
     "title": "The Seven Husbands of Evelyn Hugo",
     "sub_title": "A Novel",
@@ -58,7 +67,8 @@ const List specialForYouJson = [
     "page": "872"
   },
   {
-    "img": "https://covers.openlibrary.org/b/id/12567115-L.jpg",
+    // "img": "https://covers.openlibrary.org/b/id/12567115-L.jpg",
+    "img": "lib/images/0012567115-L.jpg",
     "price": "2.99",
     "title": "Reminders of Him",
     "sub_title": "A Novel",
