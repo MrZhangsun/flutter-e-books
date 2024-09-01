@@ -1,5 +1,8 @@
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+
+final _logger = Logger();
 
 class PlayNowPage extends StatefulWidget {
   final String img;
@@ -147,7 +150,7 @@ class _PlayNowPageState extends State<PlayNowPage> {
                           onPressed: () {
                             setState(() {
                               isPlaying = !isPlaying;
-                              print("Is Playing: $isPlaying"); // 打印状态以确保更新
+                              _logger.i("Is Playing: $isPlaying"); // 打印状态以确保更新
                             });
                           },
                           icon: Container(
@@ -179,6 +182,7 @@ class _PlayNowPageState extends State<PlayNowPage> {
 
   Widget getAppBar() {
     return AppBar(
+      backgroundColor: white,
       automaticallyImplyLeading: false,
       leading: IconButton(
           onPressed: () {

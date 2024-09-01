@@ -1,7 +1,12 @@
+import 'package:e_book_app/components/search_box.dart';
+import 'package:e_book_app/components/shop_bag_with_message.dart';
 import 'package:e_book_app/components/special_for_you.dart';
 import 'package:e_book_app/json/home_json.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+
+final _logger = Logger();
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,12 +16,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _messageCount = 3;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
       body: getBody(),
     );
+  }
+
+  void _onSearchBoxChange(value) {
+    _logger.i("Search box input change: $value");
+  }
+
+  void _onSearchBoxSubmit(value) {
+    _logger.i("Search box input submited: $value");
   }
 
   Widget getBody() {
@@ -45,19 +60,19 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SearchBox(
+                onChanged: _onSearchBoxChange,
+                onSubmitted: _onSearchBoxSubmit,
                 width: size.width * 0.8,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: grey.withOpacity(0.25),
-                    borderRadius: BorderRadius.circular(12)),
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 15, right: 15, bottom: 3),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none, hintText: "Search..."),
-                  ),
-                ),
+              ),
+              ShopBagWithMessage(
+                count: _messageCount,
+                onPressed: () {
+                  setState(() {
+                    _messageCount++;
+                    _logger.i("Mock message count changed, $_messageCount");
+                  });
+                },
               )
             ],
           ),

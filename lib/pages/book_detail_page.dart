@@ -9,6 +9,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:logger/logger.dart';
+
+final _logger = Logger();
 
 class BookDetailPage extends StatefulWidget {
   final String img;
@@ -222,7 +225,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                           progress: 0.5,
                           icon: Icons.light_mode,
                           volume: (volume) {
-                            print(volume);
+                            _logger.i(volume);
                           },
                         ),
                       ),
@@ -232,7 +235,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                           progress: 0.5,
                           icon: Icons.format_size,
                           volume: (volume) {
-                            print(volume);
+                            _logger.i(volume);
                           },
                         ),
                       )
@@ -367,7 +370,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       height: 1.5),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      print("跳转小说阅读页面");
+                      _logger.i("跳转小说阅读页面");
                     }),
             ])),
         const SizedBox(
