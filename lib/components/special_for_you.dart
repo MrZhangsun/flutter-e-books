@@ -6,7 +6,8 @@ import 'package:line_icons/line_icons.dart';
 
 class SpecialForYou extends StatelessWidget {
   final List books;
-  const SpecialForYou({super.key, required this.books});
+  final String title;
+  const SpecialForYou({super.key, required this.title, required this.books});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +18,14 @@ class SpecialForYou extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Special for you",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              title,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(

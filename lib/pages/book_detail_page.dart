@@ -1,10 +1,13 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:e_book_app/components/circle_group.dart';
 import 'package:e_book_app/components/special_for_you.dart';
+import 'package:e_book_app/components/volume_bar.dart';
 import 'package:e_book_app/json/home_json.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class BookDetailPage extends StatefulWidget {
   final String img;
@@ -111,7 +114,9 @@ class _BookDetailPageState extends State<BookDetailPage> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            getBottomSheetSetting(context);
+                          },
                           icon: const Icon(
                             Icons.settings,
                             size: 22,
@@ -154,6 +159,71 @@ class _BookDetailPageState extends State<BookDetailPage> {
     );
   }
 
+  void getBottomSheetSetting(BuildContext context) {
+    final List<DecorationFactor> themes = [
+      DecorationFactor(color: const Color(0xFFFFFFFF)),
+      DecorationFactor(color: const Color(0xFF000000)),
+      DecorationFactor(color: const Color(0xFFF0CEA0)),
+    ];
+
+    final List<DecorationFactor> types = [
+      DecorationFactor(text: "TT", color: primary),
+      DecorationFactor(text: "Tt", color: primary)
+    ];
+
+    showMaterialModalBottomSheet(
+        context: context,
+        builder: (context) => SingleChildScrollView(
+              controller: ModalScrollController.of(context),
+              child: Container(
+                width: double.infinity,
+                height: 250,
+                decoration: BoxDecoration(color: primary.withOpacity(0.15)),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CircleGroup(
+                            direction: Axis.horizontal,
+                            decorationFactors: themes,
+                          ),
+                          CircleGroup(
+                            direction: Axis.horizontal,
+                            decorationFactors: types,
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 30.0),
+                        child: VolumeBar(
+                          progress: 0.5,
+                          icon: Icons.light_mode,
+                          volume: (volume) {
+                            print(volume);
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 30.0),
+                        child: VolumeBar(
+                          progress: 0.5,
+                          icon: Icons.format_size,
+                          volume: (volume) {
+                            print(volume);
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ));
+  }
+
   Widget getBody() {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -164,6 +234,9 @@ class _BookDetailPageState extends State<BookDetailPage> {
             getOverviews(),
             getAbout(),
             getReviews(),
+            const SizedBox(
+              height: 15,
+            ),
             getSimilarBooks()
           ],
         ),
@@ -172,7 +245,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
   }
 
   Widget getSimilarBooks() {
-    return const SpecialForYou(books: similarBooksJson);
+    return const SpecialForYou(title: "Similar Books", books: similarBooksJson);
   }
 
   Widget getReviews() {

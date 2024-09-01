@@ -1,10 +1,7 @@
 import 'package:e_book_app/components/special_for_you.dart';
 import 'package:e_book_app/json/home_json.dart';
-import 'package:e_book_app/pages/book_detail_page.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:line_icons/line_icons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -75,7 +72,8 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 15,
           ),
-          const SpecialForYou(books: specialForYouJson),
+          const SpecialForYou(
+              title: "Special for you", books: specialForYouJson),
         ],
       ),
     ));
