@@ -3,6 +3,7 @@ import 'package:e_book_app/components/circle_group.dart';
 import 'package:e_book_app/components/special_for_you.dart';
 import 'package:e_book_app/components/volume_bar.dart';
 import 'package:e_book_app/json/home_json.dart';
+import 'package:e_book_app/pages/play_now_page.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +107,9 @@ class _BookDetailPageState extends State<BookDetailPage> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            getPlayNow();
+                          },
                           icon: const Icon(
                             Icons.headphones,
                             size: 22,
@@ -157,6 +160,22 @@ class _BookDetailPageState extends State<BookDetailPage> {
         ],
       ),
     );
+  }
+
+  void getPlayNow() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => PlayNowPage(
+                img: widget.img,
+                price: widget.price,
+                title: widget.title,
+                subTitle: widget.subTitle,
+                authorName: widget.authorName,
+                rate: widget.rate,
+                favourite: widget.favourite,
+                page: widget.page,
+                about: widget.about)));
   }
 
   void getBottomSheetSetting(BuildContext context) {
