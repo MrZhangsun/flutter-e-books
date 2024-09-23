@@ -1,4 +1,7 @@
+import 'package:e_book_app/components/see_all.dart';
+import 'package:e_book_app/components/see_all_title.dart';
 import 'package:e_book_app/pages/book_detail_page.dart';
+import 'package:e_book_app/pages/book_list.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -18,33 +21,12 @@ class SpecialForYou extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "See all",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                SizedBox(
-                  width: 3,
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14,
-                )
-              ],
-            ),
-          ],
+        SeeAllTitle(
+          title: title,
+          goto: const BookList(),
+        ),
+        const SizedBox(
+          height: 10,
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

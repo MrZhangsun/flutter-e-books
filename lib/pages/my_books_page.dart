@@ -1,4 +1,5 @@
 import 'package:e_book_app/components/search_box.dart';
+import 'package:e_book_app/components/search_box_with_bag.dart';
 import 'package:e_book_app/components/shop_bag_with_message.dart';
 import 'package:e_book_app/json/my_book_json.dart';
 import 'package:e_book_app/pages/book_detail_page.dart';
@@ -17,8 +18,6 @@ class MyBooksPage extends StatefulWidget {
 }
 
 class _MyBooksPageState extends State<MyBooksPage> {
-  int _messageCount = 0;
-
   void _onSearchBoxChange(value) {
     _logger.i("Search box input change: $value");
   }
@@ -42,7 +41,14 @@ class _MyBooksPageState extends State<MyBooksPage> {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [getSearchBox(), getContinueReading(), getUnread()],
+          children: [
+            SearchBoxWithBag(
+              onSearchBoxChange: _onSearchBoxChange,
+              onSearchBoxSubmit: _onSearchBoxSubmit,
+            ),
+            getContinueReading(),
+            getUnread()
+          ],
         ),
       ),
     ));
@@ -265,31 +271,6 @@ class _MyBooksPageState extends State<MyBooksPage> {
           ),
         )
       ],
-    );
-  }
-
-  Widget getSearchBox() {
-    return LayoutBuilder(
-      builder: (context, constraints) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SearchBox(
-            onChanged: _onSearchBoxChange,
-            onSubmitted: _onSearchBoxSubmit,
-            width: constraints.maxWidth * 0.88,
-            height: 40,
-          ),
-          ShopBagWithMessage(
-            count: _messageCount,
-            onPressed: () {
-              setState(() {
-                _messageCount++;
-                _logger.i("Mock message count changed, $_messageCount");
-              });
-            },
-          )
-        ],
-      ),
     );
   }
 }

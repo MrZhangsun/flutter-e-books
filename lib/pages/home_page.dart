@@ -1,6 +1,6 @@
-import 'package:e_book_app/components/search_box.dart';
-import 'package:e_book_app/components/shop_bag_with_message.dart';
+import 'package:e_book_app/components/search_box_with_bag.dart';
 import 'package:e_book_app/components/special_for_you.dart';
+import 'package:e_book_app/components/tag_button_wrap.dart';
 import 'package:e_book_app/json/home_json.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _messageCount = 3;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +33,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget getBody() {
-    Size size = MediaQuery.of(context).size;
     return SafeArea(
         child: SingleChildScrollView(
       padding: const EdgeInsets.all(15),
@@ -57,25 +54,9 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 30,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SearchBox(
-                onChanged: _onSearchBoxChange,
-                onSubmitted: _onSearchBoxSubmit,
-                width: size.width * 0.8,
-              ),
-              ShopBagWithMessage(
-                count: _messageCount,
-                onPressed: () {
-                  setState(() {
-                    _messageCount++;
-                    _logger.i("Mock message count changed, $_messageCount");
-                  });
-                },
-              )
-            ],
-          ),
+          SearchBoxWithBag(
+              onSearchBoxChange: _onSearchBoxChange,
+              onSearchBoxSubmit: _onSearchBoxSubmit),
           const SizedBox(
             height: 15,
           ),
@@ -125,26 +106,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
           ),
         ),
-        Wrap(
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.start,
-          children: [
-            ...tags.map((tag) {
-              return Container(
-                margin: const EdgeInsets.only(right: 10, top: 15),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-                decoration: BoxDecoration(
-                    color: tag['color'],
-                    borderRadius: BorderRadius.circular(12)),
-                child: Text(
-                  tag['label'],
-                  style: const TextStyle(color: white, fontSize: 12),
-                ),
-              );
-            })
-          ],
-        ),
+        const TagButtonWrap(tags: tags),
       ],
     );
   }
