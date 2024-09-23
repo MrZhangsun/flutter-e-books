@@ -1,6 +1,4 @@
-import 'package:e_book_app/components/search_box.dart';
 import 'package:e_book_app/components/search_box_with_bag.dart';
-import 'package:e_book_app/components/shop_bag_with_message.dart';
 import 'package:e_book_app/json/my_book_json.dart';
 import 'package:e_book_app/pages/book_detail_page.dart';
 import 'package:e_book_app/theme/colors.dart';
