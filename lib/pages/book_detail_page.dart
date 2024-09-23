@@ -3,6 +3,7 @@ import 'package:e_book_app/components/circle_group.dart';
 import 'package:e_book_app/components/special_for_you.dart';
 import 'package:e_book_app/components/volume_bar.dart';
 import 'package:e_book_app/json/home_json.dart';
+import 'package:e_book_app/pages/contacts_page.dart';
 import 'package:e_book_app/pages/play_now_page.dart';
 import 'package:e_book_app/theme/colors.dart';
 import 'package:flutter/gestures.dart';
@@ -102,7 +103,13 @@ class _BookDetailPageState extends State<BookDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ContactsPage()));
+                          },
                           icon: const Icon(
                             Icons.bookmark,
                             size: 22,
