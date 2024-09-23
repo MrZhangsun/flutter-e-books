@@ -1,4 +1,5 @@
 import 'package:e_book_app/json/root_app_json.dart';
+import 'package:e_book_app/pages/favourite_page.dart';
 import 'package:e_book_app/pages/home_page.dart';
 import 'package:e_book_app/pages/my_books_page.dart';
 import 'package:e_book_app/pages/store_page.dart';
@@ -37,10 +38,7 @@ class _RootPageState extends State<RootPage> {
           child: StorePage(),
         ),
         Center(
-          child: Text(
-            "Favourite",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          child: FavouritePage(),
         ),
       ],
     );
